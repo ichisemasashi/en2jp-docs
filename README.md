@@ -23,22 +23,62 @@
 
 11プロジェクトすべて完了しています。
 
-### 翻訳対象外のディレクトリ
+## これから訳すもの
 
-翻訳の作業場には、翻訳対象ではない資料も置いています。
+### 公開するもの
 
-| ディレクトリ | 内容 | Git | 備考 |
-|---|---|---|---|
-| [lisp-1-5](lisp-1-5/) | LISP 1.5 の処理系一式（`lisp15.asm`、`lisp15.lisp`、IBM 7090アセンブラ、Programmer's Manual ほか） | [ichisemasashi/lisp-1-5](https://github.com/ichisemasashi/lisp-1-5)（フォーク） | 動かして読むための資料。翻訳の予定なし |
-| [Scheme](Scheme/) | Scheme・マクロ・コンパイラ実装に関する論文と書籍のPDF、および覚え書き | 管理外（ローカルのみ） | 第三者の著作物を含むため公開リポジトリには置かない（下記） |
-| `COMMON LISP A Gentle Introduction to Symbolic Computation` | Touretzky『COMMON LISP: A Gentle Introduction to Symbolic Computation』のPDF（`book.pdf`）1点 | 管理外（ローカルのみ） | 読むための資料。第三者の著作物のため公開せず、翻訳の予定もなし |
+| ディレクトリ | 対象 | 底本の形式 |
+|---|---|---|
+| [lisp-1-5](lisp-1-5/) | `README`、`LISP-1.5-Programmers-Manual.pdf` | 平文（7.7KB）／PDF（4.6MB） |
+
+`lisp-1-5` は [ichisemasashi/lisp-1-5](https://github.com/ichisemasashi/lisp-1-5)
+（フォーク）で、LISP 1.5 の処理系一式（`lisp15.asm`、`lisp15.lisp`、
+IBM 7090アセンブラほか）を収めています。翻訳対象は `README` と
+Programmer's Manual の2点で、処理系のソースは対象外です。
+
+### ローカルのgitでのみ管理するもの
+
+次の2つは第三者の著作物を底本とするため、**リモートを設定せず、
+ローカルのgitでのみ管理します**。GitHubには登録しません。
+
+| ディレクトリ | 内容 | Git |
+|---|---|---|
+| `COMMON LISP A Gentle Introduction to Symbolic Computation` | Touretzky『COMMON LISP: A Gentle Introduction to Symbolic Computation』のPDF（`book.pdf`） | ローカルのみ（リモートなし） |
+| [Scheme](Scheme/) | Scheme・マクロ・コンパイラ実装に関する論文と書籍のPDF、平文の文書、実装のソース | ローカルのみ（リモートなし） |
 
 `Scheme` は、Chez Scheme・nanopassフレームワーク・衛生的マクロ・継続などに関する
-論文と書籍を集めた個人的な資料置き場です。市販されている書籍のPDFや、
-学会・著者に著作権のある論文が大半を占めるため、**Gitでは管理せず、
-GitHubにも公開していません**。`COMMON LISP A Gentle Introduction to Symbolic
-Computation` も同じ扱いで、著者に著作権のある書籍のPDFを1点置いてあるだけです。
-作業場の他のディレクトリと違い、これらは翻訳の対象でも成果物でもありません。
+論文と書籍を集めた資料置き場です。市販されている書籍のPDFや、学会・著者に
+著作権のある論文を多く含みます。訳文も底本と同じ場所に置くため、
+リポジトリごと非公開にしています。
+
+`Scheme/Scheme 9 from Empty Space` は上流
+（[reflectionalist/S9fES](https://github.com/reflectionalist/S9fES)）の
+クローンで、それ自体がgitリポジトリです。外側からは参照（gitlink）として
+記録しているだけなので、この配下の変更は内側のリポジトリでコミットします。
+
+### 底本がPDFのものについて
+
+これまでのプロジェクトは底本がMarkdownだったため、原文の行を1行ずつ
+訳文で置き換え、行数・行構造の一致で検証できました。PDFにはこの方法が
+使えません。次の段取りが要ります。
+
+1. テキストを抽出する（`pdftotext -layout` など）
+2. 抽出結果を見出し・段落・コード・表に整えてMarkdownにする
+3. そのMarkdownを原文として、従来どおり1行ずつ訳す
+4. 検証は「訳文 対 抽出Markdown」で行う。PDFそのものとは突き合わせられない
+
+2 が事実上の書き起こしになるため、同じ分量のMarkdownより手間がかかります。
+数式・図・表・2段組みは抽出が崩れやすく、目視の確認が要ります。
+
+### ライセンスの確認状況
+
+底本ごとに権利の状況が違います。確認できたものだけ記録します。
+
+| 底本 | 確認できたこと | 訳文の扱い |
+|---|---|---|
+| `Scheme/Scheme 9 from Empty Space` | `LICENSE` にパブリックドメインと明記 | 制約なし |
+| `Scheme/How to Design Programs, Second Edition` | `doc/index.md` に CC BY-NC-ND と明記 | **ND（改変禁止）のため翻訳の再配布は不可**。手元で読む用途に限る |
+| 上記以外のPDF・論文 | 未確認 | 非公開のまま扱う |
 
 `paip-lisp` は [norvig/paip-lisp](https://github.com/norvig/paip-lisp) のフォークで、
 他とは別系統です。翻訳対象は **`docs/` 配下の文書のみ**とし、`lisp/` 配下のソース、
