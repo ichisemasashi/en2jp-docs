@@ -19,9 +19,9 @@
 | [Modern-Go](Modern-Go/) | モダンGo — 全20章＋付録3本 | 完了 | [#1](https://github.com/ichisemasashi/Modern-Go/pull/1) マージ済 |
 | [Because-Ruby](Because-Ruby/) | Because Ruby — 全30章＋目次 | 完了 | [#1](https://github.com/ichisemasashi/Because-Ruby/pull/1) マージ済 |
 | [The-PERL-Programming-Language](The-PERL-Programming-Language/) | PERLプログラミング言語 — 全22章＋付録3本 | 完了 | [#1](https://github.com/ichisemasashi/The-PERL-Programming-Language/pull/1) マージ済 |
-| [paip-lisp](paip-lisp/) | 人工知能プログラミングのパラダイム（Norvig） — 全25章＋まえがき・付録・参考文献 | **翻訳中** | — |
+| [paip-lisp](paip-lisp/) | 人工知能プログラミングのパラダイム（Norvig） — 全25章＋まえがき・付録・参考文献 | 完了 | [#1](https://github.com/ichisemasashi/paip-lisp/pull/1) マージ済 |
 
-`paip-lisp` を除く10プロジェクトは完了しています。
+11プロジェクトすべて完了しています。
 
 ### 翻訳対象外のディレクトリ
 
@@ -31,12 +31,14 @@
 |---|---|---|---|
 | [lisp-1-5](lisp-1-5/) | LISP 1.5 の処理系一式（`lisp15.asm`、`lisp15.lisp`、IBM 7090アセンブラ、Programmer's Manual ほか） | [ichisemasashi/lisp-1-5](https://github.com/ichisemasashi/lisp-1-5)（フォーク） | 動かして読むための資料。翻訳の予定なし |
 | [Scheme](Scheme/) | Scheme・マクロ・コンパイラ実装に関する論文と書籍のPDF、および覚え書き | 管理外（ローカルのみ） | 第三者の著作物を含むため公開リポジトリには置かない（下記） |
+| `COMMON LISP A Gentle Introduction to Symbolic Computation` | Touretzky『COMMON LISP: A Gentle Introduction to Symbolic Computation』のPDF（`book.pdf`）1点 | 管理外（ローカルのみ） | 読むための資料。第三者の著作物のため公開せず、翻訳の予定もなし |
 
 `Scheme` は、Chez Scheme・nanopassフレームワーク・衛生的マクロ・継続などに関する
 論文と書籍を集めた個人的な資料置き場です。市販されている書籍のPDFや、
 学会・著者に著作権のある論文が大半を占めるため、**Gitでは管理せず、
-GitHubにも公開していません**。作業場の他のディレクトリと違い、
-これは翻訳の対象でも成果物でもありません。
+GitHubにも公開していません**。`COMMON LISP A Gentle Introduction to Symbolic
+Computation` も同じ扱いで、著者に著作権のある書籍のPDFを1点置いてあるだけです。
+作業場の他のディレクトリと違い、これらは翻訳の対象でも成果物でもありません。
 
 `paip-lisp` は [norvig/paip-lisp](https://github.com/norvig/paip-lisp) のフォークで、
 他とは別系統です。翻訳対象は **`docs/` 配下の文書のみ**とし、`lisp/` 配下のソース、
