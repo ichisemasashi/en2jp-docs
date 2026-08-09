@@ -27,18 +27,27 @@
 
 ### 公開するもの
 
-| ディレクトリ | 対象 | 底本の形式 |
-|---|---|---|
-| [lisp-1-5](lisp-1-5/) | `README`、`LISP-1.5-Programmers-Manual.pdf` | 平文（7.7KB）／PDF（4.6MB） |
+| ディレクトリ | 対象 | 底本の形式 | リポジトリ |
+|---|---|---|---|
+| [lisp-1-5](lisp-1-5/) | `README`、`LISP-1.5-Programmers-Manual.pdf` | 平文（7.7KB）／PDF（4.6MB） | [ichisemasashi/lisp-1-5](https://github.com/ichisemasashi/lisp-1-5) |
+| `Scheme/Scheme 9 from Empty Space` | `README.md`、`s9.1.txt` ほかの文書 | 平文 | [ichisemasashi/S9fES](https://github.com/ichisemasashi/S9fES) |
 
-`lisp-1-5` は [ichisemasashi/lisp-1-5](https://github.com/ichisemasashi/lisp-1-5)
-（フォーク）で、LISP 1.5 の処理系一式（`lisp15.asm`、`lisp15.lisp`、
-IBM 7090アセンブラほか）を収めています。翻訳対象は `README` と
+`lisp-1-5` は LISP 1.5 の処理系一式（`lisp15.asm`、`lisp15.lisp`、
+IBM 7090アセンブラほか）を収めたフォークです。翻訳対象は `README` と
 Programmer's Manual の2点で、処理系のソースは対象外です。
+
+`Scheme/Scheme 9 from Empty Space` は上流
+[reflectionalist/S9fES](https://github.com/reflectionalist/S9fES) の
+クローンで、それ自体がgitリポジトリです。パブリックドメインなので
+GitHubでも管理します。フォーク [ichisemasashi/S9fES](https://github.com/ichisemasashi/S9fES)
+を `origin`、上流を `upstream` に設定済みです。既定ブランチは
+`main` ではなく **`master`** なので、PRの `--base` に注意してください。
+外側の `Scheme` リポジトリからは参照（gitlink）として記録しているだけなので、
+この配下の変更は内側のリポジトリでコミットします。
 
 ### ローカルのgitでのみ管理するもの
 
-次の2つは第三者の著作物を底本とするため、**リモートを設定せず、
+次は第三者の著作物を底本とするため、**リモートを設定せず、
 ローカルのgitでのみ管理します**。GitHubには登録しません。
 
 | ディレクトリ | 内容 | Git |
@@ -49,12 +58,12 @@ Programmer's Manual の2点で、処理系のソースは対象外です。
 `Scheme` は、Chez Scheme・nanopassフレームワーク・衛生的マクロ・継続などに関する
 論文と書籍を集めた資料置き場です。市販されている書籍のPDFや、学会・著者に
 著作権のある論文を多く含みます。訳文も底本と同じ場所に置くため、
-リポジトリごと非公開にしています。
+リポジトリごと非公開にしています。`Scheme 9 from Empty Space` だけが例外で、
+上記のとおり内側のリポジトリを通じて公開します。
 
-`Scheme/Scheme 9 from Empty Space` は上流
-（[reflectionalist/S9fES](https://github.com/reflectionalist/S9fES)）の
-クローンで、それ自体がgitリポジトリです。外側からは参照（gitlink）として
-記録しているだけなので、この配下の変更は内側のリポジトリでコミットします。
+**`Scheme/How to Design Programs, Second Edition` は手元で読む用途に限ります。**
+CC BY-NC-ND の ND（改変禁止）に該当するため、訳文を公開・再配布しません。
+外側の `Scheme` リポジトリの中だけで作業します。
 
 ### 底本がPDFのものについて
 
@@ -76,8 +85,10 @@ Programmer's Manual の2点で、処理系のソースは対象外です。
 
 | 底本 | 確認できたこと | 訳文の扱い |
 |---|---|---|
-| `Scheme/Scheme 9 from Empty Space` | `LICENSE` にパブリックドメインと明記 | 制約なし |
+| `Scheme/Scheme 9 from Empty Space` | `LICENSE` にパブリックドメインと明記 | 制約なし。GitHubで公開 |
 | `Scheme/How to Design Programs, Second Edition` | `doc/index.md` に CC BY-NC-ND と明記 | **ND（改変禁止）のため翻訳の再配布は不可**。手元で読む用途に限る |
+| `lisp-1-5/LISP-1.5-Programmers-Manual.pdf` | 未確認（McCarthy ほか、MIT Press 1962）。リポジトリに `LICENSE` はなく、`README` にも表示なし | GitHubで公開する方針 |
+| `COMMON LISP A Gentle Introduction...` | 未確認 | 非公開のまま扱う |
 | 上記以外のPDF・論文 | 未確認 | 非公開のまま扱う |
 
 `paip-lisp` は [norvig/paip-lisp](https://github.com/norvig/paip-lisp) のフォークで、
