@@ -29,12 +29,19 @@
 
 | ディレクトリ | 対象 | 底本の形式 | リポジトリ |
 |---|---|---|---|
-| [lisp-1-5](lisp-1-5/) | `README`、`LISP-1.5-Programmers-Manual.pdf` | 平文（7.7KB）／PDF（4.6MB） | [ichisemasashi/lisp-1-5](https://github.com/ichisemasashi/lisp-1-5) |
+| [lisp-1-5](lisp-1-5/) | `README` のみ | 平文（7.7KB） | [ichisemasashi/lisp-1-5](https://github.com/ichisemasashi/lisp-1-5) |
 | `Scheme/Scheme 9 from Empty Space` | `README.md`、`s9.1.txt` ほかの文書 | 平文 | [ichisemasashi/S9fES](https://github.com/ichisemasashi/S9fES) |
 
 `lisp-1-5` は LISP 1.5 の処理系一式（`lisp15.asm`、`lisp15.lisp`、
-IBM 7090アセンブラほか）を収めたフォークです。翻訳対象は `README` と
-Programmer's Manual の2点で、処理系のソースは対象外です。
+IBM 7090アセンブラほか）を収めたフォークです。翻訳対象は `README` のみで、
+処理系のソースは対象外です。
+
+**`LISP-1.5-Programmers-Manual.pdf` は翻訳対象から外しました。** 前付け
+（4ページ）を確認したところ、記載されている複製の許諾は「合衆国政府の目的の
+ためであれば全部または一部の複製を認める」というもので、連邦資金による研究に
+付く定型の条項でした。一般向けの許諾も、翻訳を認める文言もありません。
+発行は The M.I.T. Press（第2版・1985年第15刷、ISBN 0-262-13011-4）。
+手元での閲覧のみとし、訳文は作らず公開もしません。
 
 `Scheme/Scheme 9 from Empty Space` は上流
 [reflectionalist/S9fES](https://github.com/reflectionalist/S9fES) の
@@ -87,8 +94,8 @@ CC BY-NC-ND の ND（改変禁止）に該当するため、訳文を公開・�
 |---|---|---|
 | `Scheme/Scheme 9 from Empty Space` | `LICENSE` にパブリックドメインと明記 | 制約なし。GitHubで公開 |
 | `Scheme/How to Design Programs, Second Edition` | `doc/index.md` に CC BY-NC-ND と明記 | **ND（改変禁止）のため翻訳の再配布は不可**。手元で読む用途に限る |
-| `lisp-1-5/LISP-1.5-Programmers-Manual.pdf` | 未確認（McCarthy ほか、MIT Press 1962）。リポジトリに `LICENSE` はなく、`README` にも表示なし | GitHubで公開する方針 |
-| `COMMON LISP A Gentle Introduction...` | 未確認 | 非公開のまま扱う |
+| `lisp-1-5/LISP-1.5-Programmers-Manual.pdf` | 前付け4ページに「合衆国政府の目的のためであれば複製を認める」とのみ記載。一般向けの許諾なし。MIT Press 第2版・1985年第15刷 | **翻訳せず、公開もしない**。手元での閲覧のみ |
+| `COMMON LISP A Gentle Introduction...` | 1ページ目に「Copyright (c) 1990 by Symbolic Technology, Ltd.」。ハードコピーでの教育目的・無償配布のみ可、**電子形式での再配布は禁止**、その他の権利はすべて留保 | **全訳しない**。原書を読むための補助資料を別途作る |
 | 上記以外のPDF・論文 | 未確認 | 非公開のまま扱う |
 
 `paip-lisp` は [norvig/paip-lisp](https://github.com/norvig/paip-lisp) のフォークで、
