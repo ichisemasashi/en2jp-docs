@@ -88,15 +88,81 @@ CC BY-NC-ND の ND（改変禁止）に該当するため、訳文を公開・�
 
 ### ライセンスの確認状況
 
-底本ごとに権利の状況が違います。確認できたものだけ記録します。
+底本ごとに権利の状況が違います。実際に前付け・奥付・ソースを見て確認した
+結果だけを記録します。推測では書きません。
 
-| 底本 | 確認できたこと | 訳文の扱い |
+#### 判断の基準
+
+**配布の許諾と、改変（翻訳）の許諾は別物です。** ここがこの作業でいちばん
+効いてくる線引きでした。
+
+翻訳は二次的著作物の作成にあたるので、「自由に配ってよい」だけでは足りず、
+**改変を認める文言**が要ります。CC BY-SA、GFDL、パブリックドメイン、BSD系は
+これを明示しています。一方「電子形式で配布してよい」「無償で複製してよい」
+としか書かれていない文書は、翻訳の対象にできません。
+
+もう1つ。**許諾の表示がないことは、許諾があることを意味しません。** 著作権は
+表示がなくても発生するため、表示の見当たらない文書は「許諾を確認できなかった」
+として扱い、翻訳しません。
+
+#### 全訳できるもの（改変が明示的に許諾されている）
+
+| 底本 | 分量 | 確認した文言 |
 |---|---|---|
-| `Scheme/Scheme 9 from Empty Space` | `LICENSE` にパブリックドメインと明記 | 制約なし。GitHubで公開 |
-| `Scheme/How to Design Programs, Second Edition` | `doc/index.md` に CC BY-NC-ND と明記 | **ND（改変禁止）のため翻訳の再配布は不可**。手元で読む用途に限る |
-| `lisp-1-5/LISP-1.5-Programmers-Manual.pdf` | 前付け4ページに「合衆国政府の目的のためであれば複製を認める」とのみ記載。一般向けの許諾なし。MIT Press 第2版・1985年第15刷 | **翻訳せず、公開もしない**。手元での閲覧のみ |
-| `COMMON LISP A Gentle Introduction...` | 1ページ目に「Copyright (c) 1990 by Symbolic Technology, Ltd.」。ハードコピーでの教育目的・無償配布のみ可、**電子形式での再配布は禁止**、その他の権利はすべて留保 | **全訳しない**。原書を読むための補助資料を別途作る |
-| 上記以外のPDF・論文 | 未確認 | 非公開のまま扱う |
+| `Scheme/Scheme 9 from Empty Space` | — | `LICENSE` にパブリックドメインと明記 |
+| `Scheme/software-design-for-flexibility`（Hanson & Sussman） | 541p | 「Creative Commons Attribution-ShareAlike 4.0 International License」（© 2021 MIT） |
+| `Scheme/MIT Scheme Reference Manual` | 328p | GNU Free Documentation License 1.1 以降。Invariant Sections なし、Front/Back-Cover Texts なし |
+| Common Lisp Cookbook（未取得。[現行版](https://github.com/LispCookbook/cl-cookbook)） | 相当量 | [BSD系](https://cl-cookbook.sourceforge.net/license.html)。派生形式・改変ありの再配布を明示的に許可。著作権表示と免責条項の同梱が条件 |
+
+#### 全訳できないもの
+
+| 底本 | 確認した文言 | 備考 |
+|---|---|---|
+| `COMMON LISP A Gentle Introduction...`（Touretzky） | © 1990 Symbolic Technology, Ltd. ハードコピーでの教育目的・無償配布のみ可、**電子形式での再配布は禁止**、その他の権利はすべて留保 | 587p |
+| `lisp-1-5/LISP-1.5-Programmers-Manual.pdf` | 前付け4ページに「合衆国政府の目的のためであれば複製を認める」とのみ。一般向けの許諾なし | MIT Press 第2版・1985年第15刷。手元での閲覧のみ |
+| `Common Lisp the Language, 2nd Edition`（CLtL2） | Butterworth-Heinemann が**電子形式での全文配布**を許諾。ただしソースの `Title-page` に「© 1984, 1989 Guy L. Steele Jr. All rights reserved.」 | **配布の許諾はあるが改変の許諾がない**典型例。LaTeXソースの翻訳も同じ理由で不可 |
+| `Scheme/How to Design Programs, 2nd Ed` | CC BY-NC-**ND**（改変禁止） | 48,097行。手元で読む用途に限る |
+| `Scheme/Three Implementation Models for Scheme` | ALL RIGHTS RESERVED | 190p |
+| `Scheme/ESSENTIALS OF PROGRAMMING LANGUAGES` | All rights reserved | 433p |
+| `Scheme/The Scheme Programming Language 4th` | © 2009 The MIT Press | 400p |
+| `Scheme/Syntactic Abstraction in Scheme`、`...the Syntax-Case Expander` | MIT Press 収録 | 18p / 23p |
+| ACM 著作権の論文4本 | `An Efficient Implementation of Multiple Return Values`(© 1994 ACM)、`Efficient Nondestructive Equality Checking`(© 2008 ACM)、`The Development of Chez Scheme`(© 2006 ACM)、`Compiler and Runtime Support for Continuation Marks`(© owner/author) | |
+| 著者著作権の論文5本 | `A Sufficiently Smart Compiler`(© 2012 Keep)、`Enabling Cross-Library Optimization`(© 2010)、`Programming With Hygienic Macros`(© 1992 Dybvig)、`Writing Hygienic Macros`(© 1992)、`Programming Languages and Lambda Calculi`(© 1989, 2003 Felleisen, Flatt) | |
+
+#### 許諾を確認できなかったもの
+
+前付け5ページと末尾3ページを走査しても表示が見つからなかった論文が11本
+あります（`A Monadic Framework for Delimited Continuations`、
+`A Nanopass Framework for Compiler Education`、
+`An Infrastructure for Profile-Driven Dynamic Recompilation`、
+`An Introduction to Quantum Computing, Without the Physics`、
+`Application and Interpretation`、`Destination-Driven Code Generation`、
+`Hygiene-Compatible Macros in an Unhygienic Macro System`、
+`Nanopass Framework Users Guide`、`Perf Study on Stack and Register Based VM`、
+`Programming with Lambda Calculus`、`Register Allocation via Graph Coloring`）。
+
+多くは著者が個人サイトで配布している preprint です。表示がない以上は翻訳
+しませんが、著者に問い合わせれば許諾を得られる可能性はあります。
+
+`lisp_in_small_pieces.pdf`(532p) と
+`Three Implementation Models for Scheme-.pdf`(189p) は**テキスト層のない
+スキャン画像**なので、この方法では走査できませんでした。後者は重複で、
+テキスト層のある版が「ALL RIGHTS RESERVED」と判明しています。
+
+#### 判断が要るもの
+
+**dpANS3**（ANSI Common Lisp 規格の草案、1000ページ超）。CLHS の元になった
+文書で、機能としては CLtL2 にいちばん近く、LaTeXソースで章ごとに分かれて
+います。
+
+- [CMU AI Repository](https://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/doc/standard/ansi/0.html)
+  は複製条件を「Free use, copying, distribution」と記載
+- ただし [ソースの .tex ファイル](https://github.com/Hexstream/dpans) 自体には
+  著作権表示も許諾文もなく、リポジトリに LICENSE ファイルもない
+
+標準化委員会が自由な利用を前提に配布した草案であり、コミュニティでは制約なしと
+扱われてきた経緯があります。ただ CC BY-SA や GFDL のような明示的な許諾とは
+同列に置けないため、着手には判断が要ります。
 
 `paip-lisp` は [norvig/paip-lisp](https://github.com/norvig/paip-lisp) のフォークで、
 他とは別系統です。翻訳対象は **`docs/` 配下の文書のみ**とし、`lisp/` 配下のソース、
