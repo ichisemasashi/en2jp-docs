@@ -1,9 +1,15 @@
 # en2jp — 英語技術書の日本語訳
 
-英語で書かれた技術書リポジトリを日本語に翻訳する作業場です。各プロジェクトは
+英語で書かれた技術書リポジトリを日本語に翻訳する作業場です。多くのプロジェクトは
 [cloudstreet-dev](https://github.com/cloudstreet-dev) の書籍リポジトリを
 `ichisemasashi` にフォークしたもので、`claude/japanese-translation`
 ブランチで翻訳し、PRを経て `main` に取り込んでいます。
+
+例外が
+[software-design-for-flexibility-ja](https://github.com/ichisemasashi/software-design-for-flexibility-ja)
+です。底本が上流リポジトリではなく市販書のPDFなので、フォークではなく新規に
+起こしました。詳しくは[底本がPDFのものについて](#底本がpdfのものについて)を
+見てください。
 
 ## 進捗一覧
 
@@ -20,8 +26,23 @@
 | [Because-Ruby](Because-Ruby/) | Because Ruby — 全30章＋目次 | 完了 | [#1](https://github.com/ichisemasashi/Because-Ruby/pull/1) マージ済 |
 | [The-PERL-Programming-Language](The-PERL-Programming-Language/) | PERLプログラミング言語 — 全22章＋付録3本 | 完了 | [#1](https://github.com/ichisemasashi/The-PERL-Programming-Language/pull/1) マージ済 |
 | [paip-lisp](paip-lisp/) | 人工知能プログラミングのパラダイム（Norvig） — 全25章＋まえがき・付録・参考文献 | 完了 | [#1](https://github.com/ichisemasashi/paip-lisp/pull/1) マージ済 |
+| [software-design-for-flexibility-ja](software-design-for-flexibility-ja/) | 柔軟性のためのソフトウェア設計（Hanson & Sussman） — 全8章＋前付け・付録2本 | 完了 | フォークではないため直接コミット |
 
-11プロジェクトすべて完了しています。
+12プロジェクトすべて完了しています。
+
+最後の1つだけ性質が違うので、要点を書いておきます。
+
+- **底本が市販書のPDF**（原著475ページ）。他はすべて上流リポジトリのMarkdown
+- **フォークではなく新規リポジトリ。** PRを経ず `main` に直接コミットしています
+- **CC BY-SA の継承義務を負う最初の公開物。** 訳文も同じ CC BY-SA 4.0 で公開し、
+  帰属表示・ライセンス表示・改変の告知を `LICENSE` と各訳文ファイルの冒頭に
+  置いています
+- **底本の `src/` は公開していません。** 原著の英文全体にあたるうえ、機械抽出で
+  数式が丸ごと落ち記号も化けており、原著を誤って伝えかねないためです。
+  いちど含めてコミットしたあと `git filter-branch` で履歴から除きました。
+  再生成の手順はリポジトリの README にあります
+
+訳文16,726行、脚注158本、練習問題100問。参考文献と索引は訳出していません。
 
 ## これから訳すもの
 
@@ -29,8 +50,20 @@
 
 | ディレクトリ | 対象 | 底本の形式 | リポジトリ |
 |---|---|---|---|
+| `Scheme/MIT Scheme Reference Manual` | 全体（328ページ） | PDF | 新規（未作成） |
 | [lisp-1-5](lisp-1-5/) | `README` のみ | 平文（7.7KB） | [ichisemasashi/lisp-1-5](https://github.com/ichisemasashi/lisp-1-5) |
 | `Scheme/Scheme 9 from Empty Space` | `README.md`、`s9.1.txt` ほかの文書 | 平文 | [ichisemasashi/S9fES](https://github.com/ichisemasashi/S9fES) |
+
+**次に着手するのは『MIT/GNU Scheme Reference Manual』です。** 訳し終えた SDF が
+読者をこの本に差し向けているからです。付録Bは「この体系についての説明書としては
+『MIT/GNU Scheme Reference Manual』を見てください」と書き、付録Aは
+「ソフトウェアは MIT/GNU Scheme のバージョン10.1.10以降で走る」と書いています。
+その参照先が日本語で読めない状態です。
+
+ライセンスは GNU Free Documentation License 1.1 以降で、Invariant Sections も
+Front/Back-Cover Texts もありません。継承義務を守れば公開できます。底本はPDFなので、
+[底本がPDFのものについて](#底本がpdfのものについて)の段取りとSDFでの反省が
+そのまま効きます。
 
 `lisp-1-5` は LISP 1.5 の処理系一式（`lisp15.asm`、`lisp15.lisp`、
 IBM 7090アセンブラほか）を収めたフォークです。翻訳対象は `README` のみで、
@@ -86,6 +119,39 @@ CC BY-NC-ND の ND（改変禁止）に該当するため、訳文を公開・�
 2 が事実上の書き起こしになるため、同じ分量のMarkdownより手間がかかります。
 数式・図・表・2段組みは抽出が崩れやすく、目視の確認が要ります。
 
+#### 実際にやってみて分かったこと（SDF、原著475ページ）
+
+上の見込みはおおむね当たっていましたが、抽出の壊れ方は想像より広範でした。
+`pdftotext -layout` の結果を信じてはいけません。
+
+**表示数式はテキスト層に存在しません。** 式番号 `(3.2)` だけが抽出され、
+本体は空白になります。落ちていることに気づかず訳すと、式が丸ごと消えます。
+14箇所を見落とし、あとから原著PDFを目で読んで転記しました。転記した式は、
+すぐ近くのコードと突き合わせて検算できます（漸化式なら対応する手続きと）。
+
+**記号が別の文字に化けます。** 見つけたものを挙げます。
+
+| 原著 | 抽出結果 | 現れた場所 |
+|---|---|---|
+| `^` | `∧` | 正規表現の行頭アンカー、`x^2` の冪 |
+| `∘` | `◦` | 手続きの合成 |
+| `°` | `◦` | 角度 |
+| `` ` `` | `‘` | クォート |
+
+`◦` が2つの別々の文字に対応する点に注意してください。文脈で判断するほかありません。
+なお **`∧` を機械的に `^` へ戻すのは危険です**。論理式の連言まで壊しました。
+
+**上付き・下付きが失われます。** `fⁿ` は `f` に、`k_exit` は2語に分かれます。
+識別子が行の途中で切れることもあります。
+
+**本文中のページ参照は使えません。** 「NNNページ」は印刷版の番号で、電子版とは
+対応しません。ずれは一定ですらありませんでした（実測で67・70・70・91）。
+SDF では102箇所を、番号（練習問題N.M・脚注N・図N.M）・節番号・手続き名・
+「先に」「このあと」に置き換えました。他書を指すページ参照は残します。
+
+**図は訳出しないと決めました。** 説明文だけ訳し、その下に原著の図番号を示す
+注を添えています。
+
 ### ライセンスの確認状況
 
 底本ごとに権利の状況が違います。実際に前付け・奥付・ソースを見て確認した
@@ -110,7 +176,7 @@ CC BY-NC-ND の ND（改変禁止）に該当するため、訳文を公開・�
 | 底本 | 分量 | 確認した文言 |
 |---|---|---|
 | `Scheme/Scheme 9 from Empty Space` | — | `LICENSE` にパブリックドメインと明記 |
-| `Scheme/software-design-for-flexibility`（Hanson & Sussman） | 541p | 「Creative Commons Attribution-ShareAlike 4.0 International License」（© 2021 MIT） |
+| `Scheme/software-design-for-flexibility`（Hanson & Sussman） | 541p | 「Creative Commons Attribution-ShareAlike 4.0 International License」（© 2021 MIT）**→ 訳出・公開済み** |
 | `Scheme/MIT Scheme Reference Manual` | 328p | GNU Free Documentation License 1.1 以降。Invariant Sections なし、Front/Back-Cover Texts なし |
 | Common Lisp Cookbook（未取得。[現行版](https://github.com/LispCookbook/cl-cookbook)） | 相当量 | [BSD系](https://cl-cookbook.sourceforge.net/license.html)。派生形式・改変ありの再配布を明示的に許可。著作権表示と免責条項の同梱が条件 |
 
@@ -268,6 +334,42 @@ Peter Norvigに返還され、著者がMITライセンスで公開したもの�
 行数が原文と異なるのは、意図して行を足した1箇所のみです
 （`The-PERL-Programming-Language/06-file-io-and-directory-operations.md`、
 不足していた `use` 文2行の追加で624行→626行）。
+
+### 訳文そのものの傷（`tools/lint-ja.py`）
+
+構造の検証は原文と突き合わせますが、**訳文の中だけで完結する傷は捕まりません**。
+SDF でこれに手ひどくやられたので、別の道具を用意しました。
+
+```bash
+python3 tools/lint-ja.py 'ja/*.md'
+python3 tools/lint-ja.py --self-test
+```
+
+見るのは4つ。いずれも**一括置換の後始末**で実際に作り込んだ傷です。
+
+- **五段動詞の活用の破壊** — 敬体→常体の一括変換で「働きます」が「働きる」になる
+- **サ変の取り違え** — 同じ変換で「返します」が「返する」になる
+- **脚注の文体の混在** — 脚注は常体なのに敬体が残る
+- **コード span の字間** — ページ参照の削除で「`foo` の定義」が「`foo`の定義」と詰まる
+
+**なぜこれが要るのか。** SDF では、原文由来の問題7件に対して**自分で壊した箇所が
+25件**ありました。自損のほうが多かったのです。しかも第5章では同じ取りこぼしを
+2回繰り返しています。原因は、壊れ方の型を**想像で列挙して**確認していたこと。
+1回目は「働きる」「使いる」など思いついた語幹を探し、8件を取りこぼしました。
+2回目に文法の形（五段連用形＋る）で網羅的に走査して、ようやく残存0を確認できました。
+
+そこでこの道具は語彙ではなく**文法の形**で走査します。書いたあと SDF 全体に
+かけたところ、通し読みで見落としていた3件（脚注の敬体1件、字間2件）が出ました。
+
+**誤検出を出さないことを優先しています。** 練習問題の文体は検査していません。
+始まりは見出しで分かるものの終わりに印がなく、本文が見出しなしで再開するため、
+区切りを機械で決められないからです。試作では練習問題の直後の本文を巻き込んで
+10件の誤検出を出しました。誤検出の多い検査は読み飛ばされます。それが25件を
+見逃した原因そのものなので、確実に区切れるものだけを見ます。
+
+一段動詞（起きる・足りる）や「〜できる」「〜すぎる」を除く判定は、実際の訳文で
+この形が83種あることを数えてから決めました。想定ではなく実測です。
+`--self-test` に、実際に作り込んだ傷から取った10件の標本を入れてあります。
 
 ## 原文のコードの不備について
 
