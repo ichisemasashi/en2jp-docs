@@ -7,9 +7,11 @@
 
 例外が
 [software-design-for-flexibility-ja](https://github.com/ichisemasashi/software-design-for-flexibility-ja)
-です。底本が上流リポジトリではなく市販書のPDFなので、フォークではなく新規に
-起こしました。詳しくは[底本がPDFのものについて](#底本がpdfのものについて)を
-見てください。
+と
+[mit-scheme-reference-ja](https://github.com/ichisemasashi/mit-scheme-reference-ja)
+です。どちらも底本が上流リポジトリではなく PDF なので、フォークではなく新規に
+起こし、`main` に直接コミットしています。詳しくは
+[底本がPDFのものについて](#底本がpdfのものについて)を見てください。
 
 ## 進捗一覧
 
@@ -55,8 +57,21 @@ SDF は訳文16,726行・脚注158本・練習問題100問、MIT Scheme マニ�
 
 | ディレクトリ | 対象 | 底本の形式 | リポジトリ |
 |---|---|---|---|
+| [cl-cookbook](cl-cookbook/) | Common Lisp Cookbook（全50章相当、約34,000行） | Markdown | [ichisemasashi/cl-cookbook](https://github.com/ichisemasashi/cl-cookbook)（フォーク・`master`） |
 | [lisp-1-5](lisp-1-5/) | `README` のみ | 平文（7.7KB） | [ichisemasashi/lisp-1-5](https://github.com/ichisemasashi/lisp-1-5) |
 | `Scheme/Scheme 9 from Empty Space` | `README.md`、`s9.1.txt` ほかの文書 | 平文 | [ichisemasashi/S9fES](https://github.com/ichisemasashi/S9fES) |
+
+**`cl-cookbook`（Common Lisp Cookbook）を取得しました**（上流
+[LispCookbook/cl-cookbook](https://github.com/LispCookbook/cl-cookbook) の
+フォーク）。ライセンスは BSD 系で、原形（Markdown）と派生形式の両方で、改変ありの
+再配布を明示的に許可します（著作権表示と免責条項の同梱が条件。`license.md` に全文）。
+底本は Markdown なので、これまでのフォーク翻訳（`claude/japanese-translation`
+ブランチ → PR）の流れにそのまま乗せられます。まだ翻訳は未着手（`master` のみ）です。
+
+**ただし、公式の日本語訳がすでに存在します。** 上流の `index.md` の Translations 節
+が、日本語訳として [askdkc/cl-cookbook-fork](https://github.com/askdkc/cl-cookbook-fork)
+（[閲覧](https://askdkc.github.io/cl-cookbook-fork/ja/)）を挙げています。着手するか
+どうかは、この既訳との重複を踏まえて判断する必要があります。
 
 **『MIT Scheme Reference Manual』は全18章を訳し終え、公開しました**（進捗一覧を
 見てください）。訳し終えた SDF が読者をこの本に差し向けているからです。付録Bは
@@ -80,12 +95,19 @@ Front/Back-Cover Texts もありません。**GFDL は CC BY-SA と違い、ラ�
 IBM 7090アセンブラほか）を収めたフォークです。翻訳対象は `README` のみで、
 処理系のソースは対象外です。
 
-**`LISP-1.5-Programmers-Manual.pdf` は翻訳対象から外しました。** 前付け
+**`LISP-1.5-Programmers-Manual.pdf` は公開翻訳の対象から外しました。** 前付け
 （4ページ）を確認したところ、記載されている複製の許諾は「合衆国政府の目的の
 ためであれば全部または一部の複製を認める」というもので、連邦資金による研究に
 付く定型の条項でした。一般向けの許諾も、翻訳を認める文言もありません。
 発行は The M.I.T. Press（第2版・1985年第15刷、ISBN 0-262-13011-4）。
-手元での閲覧のみとし、訳文は作らず公開もしません。
+
+ただし、**私的使用の範囲（著作権法第30条・第47条の6）で訳者本人が訳すための
+作業環境**を [`lisp-1-5-manual-ja`](lisp-1-5-manual-ja/) にローカル専用で用意して
+あります（リモートなし・非公開）。底本のPDFは公開リポジトリ
+[ichisemasashi/lisp-1-5](https://github.com/ichisemasashi/lisp-1-5) 側にありますが、
+訳文をそこに置くと push で公開されてしまうため、訳出の一式はこの別ディレクトリに
+分けています。[私的使用の範囲で、訳者本人が訳すもの](#私的使用の範囲で訳者本人が訳すもの)
+を見てください。
 
 `Scheme/Scheme 9 from Empty Space` は上流
 [reflectionalist/S9fES](https://github.com/reflectionalist/S9fES) の
@@ -189,7 +211,7 @@ SDF では102箇所を、番号（練習問題N.M・脚注N・図N.M）・節番
 | `Scheme/Scheme 9 from Empty Space` | — | `LICENSE` にパブリックドメインと明記 |
 | `Scheme/software-design-for-flexibility`（Hanson & Sussman） | 541p | 「Creative Commons Attribution-ShareAlike 4.0 International License」（© 2021 MIT）**→ 訳出・公開済み** |
 | `Scheme/MIT Scheme Reference Manual` | 328p | GNU Free Documentation License 1.1 以降。Invariant Sections なし、Front/Back-Cover Texts なし **→ 訳出・公開済み**（全18章） |
-| Common Lisp Cookbook（未取得。[現行版](https://github.com/LispCookbook/cl-cookbook)） | 相当量 | [BSD系](https://cl-cookbook.sourceforge.net/license.html)。派生形式・改変ありの再配布を明示的に許可。著作権表示と免責条項の同梱が条件 |
+| Common Lisp Cookbook（[取得済み](cl-cookbook/)。上流 [LispCookbook/cl-cookbook](https://github.com/LispCookbook/cl-cookbook)） | 約34,000行 | BSD系（`license.md`）。原形・派生形式ともに改変ありの再配布を明示的に許可。著作権表示と免責条項の同梱が条件 **→ 取得済み・未着手。公式の日本語訳が別途存在（[askdkc/cl-cookbook-fork](https://github.com/askdkc/cl-cookbook-fork)）** |
 
 #### 私的使用の範囲で、訳者本人が訳すもの
 
@@ -206,12 +228,18 @@ SDF では102箇所を、番号（練習問題N.M・脚注N・図N.M）・節番
   訳語集の雛形）は用意してあります。[作業環境](#私的使用のための作業環境)を
   見てください
 
+具体的に作業環境を用意したもの:
+
+| ディレクトリ | 底本 | 状態 |
+|---|---|---|
+| [`lisp-1-5-manual-ja`](lisp-1-5-manual-ja/) | LISP 1.5 Programmer's Manual（McCarthy ほか、MIT Press） | 環境用意済み・訳出未着手（`ja/` は空） |
+
 #### 権利者の許諾がないもの（公開を伴う翻訳はしない）
 
 | 底本 | 確認した文言 | 備考 |
 |---|---|---|
 | `COMMON LISP A Gentle Introduction...`（Touretzky） | © 1990 Symbolic Technology, Ltd. ハードコピーでの教育目的・無償配布のみ可、**電子形式での再配布は禁止**、その他の権利はすべて留保 | 587p |
-| `lisp-1-5/LISP-1.5-Programmers-Manual.pdf` | 前付け4ページに「合衆国政府の目的のためであれば複製を認める」とのみ。一般向けの許諾なし | MIT Press 第2版・1985年第15刷。手元での閲覧のみ |
+| `lisp-1-5/LISP-1.5-Programmers-Manual.pdf` | 前付け4ページに「合衆国政府の目的のためであれば複製を認める」とのみ。一般向けの許諾なし | MIT Press 第2版・1985年第15刷。公開翻訳は不可。私的使用の範囲で訳す作業環境を [`lisp-1-5-manual-ja`](lisp-1-5-manual-ja/) にローカル専用で用意（非公開） |
 | `Common Lisp the Language, 2nd Edition`（CLtL2） | Butterworth-Heinemann が**電子形式での全文配布**を許諾。ただしソースの `Title-page` に「© 1984, 1989 Guy L. Steele Jr. All rights reserved.」 | **配布の許諾はあるが改変の許諾がない**典型例。LaTeXソースの翻訳も同じ理由で不可 |
 | `Scheme/How to Design Programs, 2nd Ed` | CC BY-NC-**ND**（改変禁止） | 48,097行。手元で読む用途に限る |
 | `Scheme/Three Implementation Models for Scheme` | ALL RIGHTS RESERVED | 190p |
