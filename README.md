@@ -27,22 +27,27 @@
 | [The-PERL-Programming-Language](The-PERL-Programming-Language/) | PERLプログラミング言語 — 全22章＋付録3本 | 完了 | [#1](https://github.com/ichisemasashi/The-PERL-Programming-Language/pull/1) マージ済 |
 | [paip-lisp](paip-lisp/) | 人工知能プログラミングのパラダイム（Norvig） — 全25章＋まえがき・付録・参考文献 | 完了 | [#1](https://github.com/ichisemasashi/paip-lisp/pull/1) マージ済 |
 | [software-design-for-flexibility-ja](software-design-for-flexibility-ja/) | 柔軟性のためのソフトウェア設計（Hanson & Sussman） — 全8章＋前付け・付録2本 | 完了 | フォークではないため直接コミット |
+| [mit-scheme-reference-ja](https://github.com/ichisemasashi/mit-scheme-reference-ja) | MIT Scheme リファレンス・マニュアル（Edition 1.94, 2001） — 全18章＋前付け | 完了 | フォークではないため直接コミット |
 
-12プロジェクトすべて完了しています。
+13プロジェクトすべて完了しています。
 
-最後の1つだけ性質が違うので、要点を書いておきます。
+最後の2つ（SDF と MIT Scheme マニュアル）だけ性質が違うので、要点を書いておきます。
 
-- **底本が市販書のPDF**（原著475ページ）。他はすべて上流リポジトリのMarkdown
+- **底本が市販書・配布物のPDF**（SDF は原著475ページ、MIT Scheme マニュアルは
+  328ページ）。他はすべて上流リポジトリのMarkdown
 - **フォークではなく新規リポジトリ。** PRを経ず `main` に直接コミットしています
-- **CC BY-SA の継承義務を負う最初の公開物。** 訳文も同じ CC BY-SA 4.0 で公開し、
-  帰属表示・ライセンス表示・改変の告知を `LICENSE` と各訳文ファイルの冒頭に
-  置いています
+- **継承義務を負う公開物。** SDF は CC BY-SA 4.0、MIT Scheme マニュアルは GFDL 1.1
+  以降。どちらも訳文を同じライセンスで公開し、帰属表示・ライセンス表示・改変の告知を
+  `LICENSE`（相当）と各訳文ファイルの冒頭に置いています。**GFDL は CC BY-SA と違い
+  ライセンス英語原文の同梱を義務づける**ので、MIT Scheme マニュアルでは FSF 正典を
+  `GFDL-1.1.txt` に収めました
 - **底本の `src/` は公開していません。** 原著の英文全体にあたるうえ、機械抽出で
-  数式が丸ごと落ち記号も化けており、原著を誤って伝えかねないためです。
-  いちど含めてコミットしたあと `git filter-branch` で履歴から除きました。
-  再生成の手順はリポジトリの README にあります
+  数式が落ち記号も化けており、原著を誤って伝えかねないためです。SDF ではいちど含めて
+  コミットしたあと `git filter-branch` で履歴から除き、MIT Scheme マニュアルでは
+  最初から `.gitignore` で除いています。再生成の手順は各リポジトリの README にあります
 
-訳文16,726行、脚注158本、練習問題100問。参考文献と索引は訳出していません。
+SDF は訳文16,726行・脚注158本・練習問題100問、MIT Scheme マニュアルは訳文14,042行・
+エントリ約1,341項目。どちらも参考文献・索引は訳出していません。
 
 ## これから訳すもの
 
@@ -50,23 +55,19 @@
 
 | ディレクトリ | 対象 | 底本の形式 | リポジトリ |
 |---|---|---|---|
-| `mit-scheme-reference-ja` | MIT Scheme Reference Manual（328ページ） | PDF | [ichisemasashi/mit-scheme-reference-ja](https://github.com/ichisemasashi/mit-scheme-reference-ja) |
 | [lisp-1-5](lisp-1-5/) | `README` のみ | 平文（7.7KB） | [ichisemasashi/lisp-1-5](https://github.com/ichisemasashi/lisp-1-5) |
 | `Scheme/Scheme 9 from Empty Space` | `README.md`、`s9.1.txt` ほかの文書 | 平文 | [ichisemasashi/S9fES](https://github.com/ichisemasashi/S9fES) |
 
-**『MIT Scheme Reference Manual』に着手し、公開を始めました。** 訳し終えた SDF が
-読者をこの本に差し向けているからです。付録Bは「この体系についての説明書としては
-『MIT/GNU Scheme Reference Manual』を見てください」と書き、付録Aは
-「ソフトウェアは MIT/GNU Scheme のバージョン10.1.10以降で走る」と書いています。
-その参照先が日本語で読めない状態でした。
+**『MIT Scheme Reference Manual』は全18章を訳し終え、公開しました**（進捗一覧を
+見てください）。訳し終えた SDF が読者をこの本に差し向けているからです。付録Bは
+「この体系についての説明書としては『MIT/GNU Scheme Reference Manual』を見てください」
+と書き、付録Aは「ソフトウェアは MIT/GNU Scheme のバージョン10.1.10以降で走る」と
+書いています。その参照先がこれで日本語で読めます。
 
 底本は手元の PDF（Edition 1.94, for Scheme Release 7.5, 2001年）で、現行版
 （12.x 系）ではありません。SDF が薦めるのは現行版ですが、手元にあるのがこの版
-なのでこの版を訳しています。全18章＋付録、英文で約13,000行。
-
-リポジトリは [ichisemasashi/mit-scheme-reference-ja](https://github.com/ichisemasashi/mit-scheme-reference-ja)（public）。
-SDF と同じくフォークではなく新規なので `main` に直接コミットし、章ごとに push して
-います。**前付け・第1章・第2章まで公開済み。**
+なのでこの版を訳しました。リポジトリは
+[ichisemasashi/mit-scheme-reference-ja](https://github.com/ichisemasashi/mit-scheme-reference-ja)（public）。
 
 ライセンスは GNU Free Documentation License 1.1 以降で、Invariant Sections も
 Front/Back-Cover Texts もありません。**GFDL は CC BY-SA と違い、ライセンス英語
@@ -187,7 +188,7 @@ SDF では102箇所を、番号（練習問題N.M・脚注N・図N.M）・節番
 |---|---|---|
 | `Scheme/Scheme 9 from Empty Space` | — | `LICENSE` にパブリックドメインと明記 |
 | `Scheme/software-design-for-flexibility`（Hanson & Sussman） | 541p | 「Creative Commons Attribution-ShareAlike 4.0 International License」（© 2021 MIT）**→ 訳出・公開済み** |
-| `Scheme/MIT Scheme Reference Manual` | 328p | GNU Free Documentation License 1.1 以降。Invariant Sections なし、Front/Back-Cover Texts なし **→ 訳出中・公開中**（前付け〜第2章） |
+| `Scheme/MIT Scheme Reference Manual` | 328p | GNU Free Documentation License 1.1 以降。Invariant Sections なし、Front/Back-Cover Texts なし **→ 訳出・公開済み**（全18章） |
 | Common Lisp Cookbook（未取得。[現行版](https://github.com/LispCookbook/cl-cookbook)） | 相当量 | [BSD系](https://cl-cookbook.sourceforge.net/license.html)。派生形式・改変ありの再配布を明示的に許可。著作権表示と免責条項の同梱が条件 |
 
 #### 私的使用の範囲で、訳者本人が訳すもの
