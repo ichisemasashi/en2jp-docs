@@ -50,20 +50,30 @@
 
 | ディレクトリ | 対象 | 底本の形式 | リポジトリ |
 |---|---|---|---|
-| `Scheme/MIT Scheme Reference Manual` | 全体（328ページ） | PDF | 新規（未作成） |
+| `mit-scheme-reference-ja` | MIT Scheme Reference Manual（328ページ） | PDF | [ichisemasashi/mit-scheme-reference-ja](https://github.com/ichisemasashi/mit-scheme-reference-ja) |
 | [lisp-1-5](lisp-1-5/) | `README` のみ | 平文（7.7KB） | [ichisemasashi/lisp-1-5](https://github.com/ichisemasashi/lisp-1-5) |
 | `Scheme/Scheme 9 from Empty Space` | `README.md`、`s9.1.txt` ほかの文書 | 平文 | [ichisemasashi/S9fES](https://github.com/ichisemasashi/S9fES) |
 
-**次に着手するのは『MIT/GNU Scheme Reference Manual』です。** 訳し終えた SDF が
+**『MIT Scheme Reference Manual』に着手し、公開を始めました。** 訳し終えた SDF が
 読者をこの本に差し向けているからです。付録Bは「この体系についての説明書としては
 『MIT/GNU Scheme Reference Manual』を見てください」と書き、付録Aは
 「ソフトウェアは MIT/GNU Scheme のバージョン10.1.10以降で走る」と書いています。
-その参照先が日本語で読めない状態です。
+その参照先が日本語で読めない状態でした。
+
+底本は手元の PDF（Edition 1.94, for Scheme Release 7.5, 2001年）で、現行版
+（12.x 系）ではありません。SDF が薦めるのは現行版ですが、手元にあるのがこの版
+なのでこの版を訳しています。全18章＋付録、英文で約13,000行。
+
+リポジトリは [ichisemasashi/mit-scheme-reference-ja](https://github.com/ichisemasashi/mit-scheme-reference-ja)（public）。
+SDF と同じくフォークではなく新規なので `main` に直接コミットし、章ごとに push して
+います。**前付け・第1章・第2章まで公開済み。**
 
 ライセンスは GNU Free Documentation License 1.1 以降で、Invariant Sections も
-Front/Back-Cover Texts もありません。継承義務を守れば公開できます。底本はPDFなので、
-[底本がPDFのものについて](#底本がpdfのものについて)の段取りとSDFでの反省が
-そのまま効きます。
+Front/Back-Cover Texts もありません。**GFDL は CC BY-SA と違い、ライセンス英語
+原文の同梱を義務づけます**（第8節が翻訳を改変の一種と定め、第4節の条件に従わせる）。
+そこで FSF 正典の GFDL 1.1 を `GFDL-1.1.txt` に収めました。底本の `src/` は SDF と
+同じく非公開です。底本はPDFなので、[底本がPDFのものについて](#底本がpdfのものについて)
+の段取りとSDFでの反省がそのまま効きました。
 
 `lisp-1-5` は LISP 1.5 の処理系一式（`lisp15.asm`、`lisp15.lisp`、
 IBM 7090アセンブラほか）を収めたフォークです。翻訳対象は `README` のみで、
@@ -177,7 +187,7 @@ SDF では102箇所を、番号（練習問題N.M・脚注N・図N.M）・節番
 |---|---|---|
 | `Scheme/Scheme 9 from Empty Space` | — | `LICENSE` にパブリックドメインと明記 |
 | `Scheme/software-design-for-flexibility`（Hanson & Sussman） | 541p | 「Creative Commons Attribution-ShareAlike 4.0 International License」（© 2021 MIT）**→ 訳出・公開済み** |
-| `Scheme/MIT Scheme Reference Manual` | 328p | GNU Free Documentation License 1.1 以降。Invariant Sections なし、Front/Back-Cover Texts なし |
+| `Scheme/MIT Scheme Reference Manual` | 328p | GNU Free Documentation License 1.1 以降。Invariant Sections なし、Front/Back-Cover Texts なし **→ 訳出中・公開中**（前付け〜第2章） |
 | Common Lisp Cookbook（未取得。[現行版](https://github.com/LispCookbook/cl-cookbook)） | 相当量 | [BSD系](https://cl-cookbook.sourceforge.net/license.html)。派生形式・改変ありの再配布を明示的に許可。著作権表示と免責条項の同梱が条件 |
 
 #### 私的使用の範囲で、訳者本人が訳すもの
